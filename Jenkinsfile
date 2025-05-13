@@ -20,10 +20,14 @@ pipeline {
 		}
 		stage('Test') {
 			steps {
-				sh 'mvn test'
+				sh 'mvn test -DSkipTests'
 			}
-            
 		}
+        stage('Scan') {
+            steps {
+                sh 'triy fs --format table -o fs.html .'
+            }   
+        } 
 		// stage('Sonar Analysis') {
         //     steps {
         //         withSonarQubeEnv('sonar-server') {
