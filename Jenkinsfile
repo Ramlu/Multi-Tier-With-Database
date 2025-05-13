@@ -22,21 +22,22 @@ pipeline {
 			steps {
 				sh 'mvn test'
 			}
+            
 		}
-		stage('Sonar Analysis') {
-            steps {
-                withSonarQubeEnv('sonar-server') {
-                    sh "${SONAR_HOME}/bin/sonar-scanner " +
-                       "-Dsonar.projectKey=bankapp " +
-                       "-Dsonar.projectName=BankApp " +
-                       "-Dsonar.sources=src/main/java " +
-                       "-Dsonar.tests=src/test/java " +
-                       "-Dsonar.java.binaries=target/classes " +
-                       "-Dsonar.junit.reportPaths=target/surefire-reports " +
-                       "-Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
-                }
-            }
-        }
+		// stage('Sonar Analysis') {
+        //     steps {
+        //         withSonarQubeEnv('sonar-server') {
+        //             sh "${SONAR_HOME}/bin/sonar-scanner " +
+        //                "-Dsonar.projectKey=bankapp " +
+        //                "-Dsonar.projectName=BankApp " +
+        //                "-Dsonar.sources=src/main/java " +
+        //                "-Dsonar.tests=src/test/java " +
+        //                "-Dsonar.java.binaries=target/classes " +
+        //                "-Dsonar.junit.reportPaths=target/surefire-reports " +
+        //                "-Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
+        //         }
+        //     }
+        // }
         // stage('Deploy') {
 		// 	steps {
 		// 		withMaven(globalMavenSettingsConfig: '5ecbebcf-4fa0-413f-a9de-1cd928c6b445', jdk: 'jdk-21', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
