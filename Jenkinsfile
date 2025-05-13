@@ -25,7 +25,7 @@ pipeline {
 		}
         stage('Scan') {
             steps {
-                sh 'triy fs --format table -o fs.html .'
+                sh 'trivy fs --format table -o fs.html .'
             }   
         } 
 		// stage('Sonar Analysis') {
